@@ -7,6 +7,8 @@ class CreateSales < ActiveRecord::Migration
       t.integer :price, null: false
       t.string :address
       t.string :provider
+
+      t.timestamps
     end
   end
 end
