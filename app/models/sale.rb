@@ -14,4 +14,6 @@
 class Sale < ActiveRecord::Base
   validates :price, :amount, presence: true
   validates :price, :amount, numericality: { greater_than: 0 }
+
+  scope :descendent, -> { order(created_at: :desc) }
 end
