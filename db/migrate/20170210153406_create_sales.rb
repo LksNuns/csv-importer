@@ -3,8 +3,8 @@ class CreateSales < ActiveRecord::Migration
     create_table :sales do |t|
       t.string :buyer
       t.text :description
-      t.integer :amount, null: false
-      t.integer :price, null: false
+      t.integer :quantity, null: false
+      t.monetize :amount, null: false
       t.string :address
       t.string :provider
 

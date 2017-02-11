@@ -1,8 +1,8 @@
 <tr>
   <td class="text-left"><%= sale.buyer %></td>
   <td class="text-left"><%= sale.description %></td>
-  <td class="text-left"><%= sale.price %></td>
-  <td class="text-left"><%= sale.amount %></td>
+  <td class="text-left"><%= humanized_money_with_symbol(sale.amount) %></td>
+  <td class="text-left"><%= sale.quantity %></td>
   <td class="text-left"><%= sale.address %></td>
   <td class="text-left"><%= sale.provider %></td>
 </tr>

@@ -2,22 +2,23 @@
 #
 # Table name: sales
 #
-#  id          :integer          not null, primary key
-#  buyer       :string
-#  description :text
-#  amount      :integer          not null
-#  price       :integer          not null
-#  address     :string
-#  provider    :string
+#  id              :integer          not null, primary key
+#  buyer           :string
+#  description     :text
+#  qunatity        :integer          not null
+#  amount_centavos :integer          default(0), not null
+#  amount_currency :string           default("BRL"), not null
+#  address         :string
+#  provider        :string
+#  created_at      :datetime
+#  updated_at      :datetime
 #
 
 class Sale < ActiveRecord::Base
-  validates :price, :amount, presence: true
-  validates :price, :amount, numericality: { greater_than: 0 }
+  validates :amount_centavos, :quantity, presence: true
+  validates :amount_centavos, :quantity, numericality: { greater_than_or_equal: 0 }
 
   scope :descendent, -> { order(created_at: :desc) }
 
-  def self.to_money(value)
-    (value*100).to_i
-  end
+  monetize :amount_centavos
 end

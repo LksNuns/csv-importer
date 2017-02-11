@@ -13,12 +13,13 @@ class SaleCsvParser
   end
 
   def row_params(row)
-    price = Sale.to_money(row['preco_unitario']) if row['preco_unitario'].present?
+    amount = row['preco_unitario']
+    amount = Money.from_amount(amount) if amount.present?
     {
       buyer: row['comprador'],
       description: row['descricao'],
-      amount: row['quantidade'],
-      price: price,
+      quantity: row['quantidade'],
+      amount: amount,
       address: row['endereco'],
       provider: row['fornecedor']
     }

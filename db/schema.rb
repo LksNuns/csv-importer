@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(version: 20170210153406) do
   create_table "sales", force: :cascade do |t|
     t.string   "buyer"
     t.text     "description"
-    t.integer  "amount",      null: false
-    t.integer  "price",       null: false
+    t.integer  "quantity",                        null: false
+    t.integer  "amount_centavos", default: 0,     null: false
+    t.string   "amount_currency", default: "BRL", null: false
     t.string   "address"
     t.string   "provider"
     t.datetime "created_at"
