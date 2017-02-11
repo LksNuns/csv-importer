@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :sale do
-    amount 10
-    price 220
+    amount_centavos 2000
+    quantity 4
   end
 end
