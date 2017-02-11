@@ -8,6 +8,7 @@
 @import "table";
 @import "navbar";
 @import "sales/index";
+@import "kaminari";
 
 body {
   background-color: #fafffc;
@@ -27,4 +28,8 @@ h1 {
     .text-center-sm {
         text-align: center;
     }
+}
+
+.text-center {
+   text-align:center
 }
