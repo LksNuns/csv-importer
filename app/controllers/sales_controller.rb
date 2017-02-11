@@ -6,10 +6,7 @@ class SalesController < ApplicationController
 
   def import_csv
     sale_parser = SaleCsvParser.new(params[:file].path)
-
-    sale_parser.each_row_params do |row|
-      Sale.create(row)
-    end
+    sale_parser.each_sale_params { |params| Sale.create(params) }
 
     redirect_to sales_path
   end

@@ -5,14 +5,14 @@ class SaleCsvParser
     @file = file
   end
 
-  def each_row_params
+  def each_sale_params
     open_csv.each do |row|
-      params = self.row_params(row)
+      params = self.sale_params(row)
       yield params
     end
   end
 
-  def row_params(row)
+  def sale_params(row)
     amount = row['preco_unitario']
     amount = Money.from_amount(amount) if amount.present?
     {
