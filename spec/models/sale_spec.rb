@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Sale do
   describe "shoulda matchers" do
-    it { should validate_presence_of(:amount_centavos) }
-    it { should validate_presence_of(:quantity) }
+    it { is_expected.to validate_presence_of(:amount_centavos) }
+    it { is_expected.to validate_numericality_of(:amount_centavos) }
+    it { is_expected.to validate_presence_of(:quantity) }
   end
 
   describe ".descendent" do
