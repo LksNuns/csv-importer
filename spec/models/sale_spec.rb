@@ -16,4 +16,14 @@ RSpec.describe Sale do
     end
   end
 
+  describe ".total_amount" do
+    it "returns total amount of all sales multiply by quantity" do
+      sale1 = FactoryGirl.create(:sale, amount_centavos: 300, quantity: 10)
+      sale2 = FactoryGirl.create(:sale, amount_centavos: 250, quantity: 4)
+      sale3 = FactoryGirl.create(:sale, amount_centavos: 100, quantity: 5)
+
+      expect(Sale.total_amount).to eq Money.new(4500)
+    end
+  end
+
 end
