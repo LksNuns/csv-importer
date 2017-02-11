@@ -2,6 +2,7 @@ class SalesController < ApplicationController
 
   def index
     @sales = Sale.descendent
+    @total_sale_amount = Sale.total_amount
   end
 
   def import_csv
