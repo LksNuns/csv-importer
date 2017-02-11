@@ -1,7 +1,7 @@
 class SalesController < ApplicationController
 
   def index
-    @sales = Sale.descendent
+    @sales = Sale.descendent.page params[:page]
     @total_sale_amount = Sale.total_amount
   end
 

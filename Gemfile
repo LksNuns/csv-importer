@@ -11,6 +11,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 
 gem 'money-rails', '~> 1.8'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'
