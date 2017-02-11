@@ -6,7 +6,9 @@ class SalesController < ApplicationController
 
   def import_csv
     sale_parser = SaleCsvParser.new(params[:file].path)
-    sale_parser.each_sale_params! { |params| Sale.create(params) }
+    valid_parser = sale_parser.each_sale_params { |params| Sale.create(params) }
+
+    flash[:error] = "Arquivo inválido." unless valid_parser
     redirect_to sales_path
   end
 

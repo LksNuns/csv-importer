@@ -5,10 +5,14 @@ class SaleCsvParser
     @file = file
   end
 
-  def each_sale_params!
-    open_csv.each do |row|
-      params = self.class.sale_params(row)
-      yield params
+  def each_sale_params
+    begin
+      open_csv.each do |row|
+        params = self.class.sale_params(row)
+        yield params
+      end
+    rescue
+      false
     end
   end
 
