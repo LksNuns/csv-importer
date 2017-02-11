@@ -16,4 +16,8 @@ class Sale < ActiveRecord::Base
   validates :price, :amount, numericality: { greater_than: 0 }
 
   scope :descendent, -> { order(created_at: :desc) }
+
+  def self.to_money(value)
+    (value*100).to_i
+  end
 end
