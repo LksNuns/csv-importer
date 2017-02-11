@@ -1,14 +1,11 @@
 <section class="jumbotron main-header">
   <div class="container">
 
-    <div class="col-lg-12">
-      <div class="input-group">
-        <input type="text" class="form-control input-lg" placeholder="Search for...">
-        <span class="input-group-btn">
-          <button class="btn btn-primary btn-lg" type="button">Selecionar...</button>
-        </span>
-      </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 -->
+    <%= form_tag(import_csv_sales_path,  multipart: true) do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag 'Submit' %>
+    <% end %>
+
 
   </div>
 </section>
