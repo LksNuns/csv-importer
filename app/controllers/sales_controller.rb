@@ -1,6 +1,7 @@
 class SalesController < ApplicationController
 
   def index
+    @sales = Sale.descendent
   end
 
   def import_csv
