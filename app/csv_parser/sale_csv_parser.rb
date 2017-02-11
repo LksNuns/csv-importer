@@ -5,7 +5,7 @@ class SaleCsvParser
     @file = file
   end
 
-  def each_sale_params
+  def each_sale_params!
     open_csv.each do |row|
       params = self.class.sale_params(row)
       yield params
@@ -24,7 +24,7 @@ class SaleCsvParser
       provider: row['fornecedor']
     }
   end
-  
+
   def open_csv
     options = {
       headers: true,
