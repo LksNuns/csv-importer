@@ -24,10 +24,23 @@ h1 {
   font-size: 2.3em;
 }
 
+footer {
+  padding: 10px;
+  background-color: #333333;
+
+  h6 {
+    color: #FFF;
+  }
+}
+
 @media (max-width: 992px) {
     .text-center-sm {
         text-align: center;
     }
+}
+
+.main-container {
+  padding-bottom: 20px;
 }
 
 .text-center {
