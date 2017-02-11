@@ -7,12 +7,12 @@ class SaleCsvParser
 
   def each_sale_params
     open_csv.each do |row|
-      params = self.sale_params(row)
+      params = self.class.sale_params(row)
       yield params
     end
   end
 
-  def sale_params(row)
+  def self.sale_params(row)
     amount = row['preco_unitario']
     amount = Money.from_amount(amount) if amount.present?
     {
@@ -24,9 +24,7 @@ class SaleCsvParser
       provider: row['fornecedor']
     }
   end
-
-  private
-
+  
   def open_csv
     options = {
       headers: true,
