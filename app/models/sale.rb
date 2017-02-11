@@ -21,4 +21,8 @@ class Sale < ActiveRecord::Base
   scope :descendent, -> { order(created_at: :desc) }
 
   monetize :amount_centavos
+
+  def self.total_amount
+    Money.new(Sale.sum("amount_centavos * quantity"))
+  end
 end
