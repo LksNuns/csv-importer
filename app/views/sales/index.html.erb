@@ -2,18 +2,18 @@
   <div class="container">
 
     <div class="row">
-    <div class="form-group form-group-lg">
-      <%= form_tag(import_csv_sales_path, id: "import_sale_csv", multipart: true) do %>
-        <div class="input-group">
-          <input type="text" class="form-control" readonly>
-          <label class="input-group-btn">
-            <span class="btn btn-lg btn-primary">
-              Browse&hellip; <%= file_field_tag :file, id: "sale_csv_input", style:"display: none;" %>
-            </span>
-          </label>
+      <div class="form-group form-group-lg">
+        <%= form_tag(import_csv_sales_path, id: "import_sale_csv", multipart: true) do %>
+          <div class="input-group">
+            <input type="text" class="form-control" readonly>
+            <label class="input-group-btn">
+              <span class="btn btn-lg btn-primary">
+                Selecionar&hellip; <%= file_field_tag :file, id: "sale_csv_input", style:"display: none;" %>
+              </span>
+            </label>
+          </div>
         </div>
 
-        </div>
         <div class="row">
           <div class="col-sm-12 col-md-10">
             <% if flash[:error].present? %>
@@ -23,8 +23,8 @@
                 <span id='error-msg'><%= flash[:error] %></span>
               </div>
             <% end %>
-
           </div>
+
           <div class="col-sm-12 col-md-2">
             <div class="pull-right-md text-center-sm">
               <%= button_tag(type: "submit", class: "btn btn-lg btn-success", id: "submit_sale_file") do %>
@@ -32,6 +32,7 @@
               <% end %>
             </div>
           </div>
+
         </div>
       <% end %>
     </div>
@@ -63,11 +64,9 @@
         </tr>
       </thead>
       <tbody class="table-hover">
-
         <% @sales.each do |sale| %>
           <%= render partial: 'sale', locals: { sale: sale } %>
         <% end %>
-
       </tbody>
     </table>
   </div>
@@ -75,7 +74,6 @@
 <div class="row">
   <div class="col-sm-12 text-center">
     <%= paginate @sales %>
-
   </div>
 </div>
 </section>
