@@ -12,6 +12,7 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'money-rails', '~> 1.8'
 gem 'kaminari'
+gem "interactor-rails", "~> 2.0"
 
 group :development, :test do
   gem 'byebug'
