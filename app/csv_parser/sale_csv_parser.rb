@@ -1,17 +1,23 @@
 require 'csv'
 
 class SaleCsvParser
+  include ValidateSaleCsvFile
+  
+  attr_accessor :error
+
   def initialize(file)
     @file = file
+    verify_file
   end
 
   def each_sale_params
-    begin
+    if valid?
       open_csv.each do |row|
         params = self.class.sale_params(row)
         yield params
       end
-    rescue
+      true
+    else
       false
     end
   end
@@ -39,5 +45,21 @@ class SaleCsvParser
       }
     }
     CSV.read(@file, options)
+  end
+
+  def valid?
+    @error.present? ? false : true
+  end
+
+  private
+
+  def verify_file
+    @error = verify_file_exist(@file)
+    return if error.present?
+
+    @error = verify_content_type(@file)
+    return if error.present?
+
+    @error = verify_structure(open_csv)
   end
 end

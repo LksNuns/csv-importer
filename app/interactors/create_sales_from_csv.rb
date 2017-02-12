@@ -2,7 +2,6 @@ class CreateSalesFromCsv
   include Interactor
 
   def call
-    verify_file_exists(csv_file)
     read_csv_file
   end
 
@@ -13,18 +12,10 @@ class CreateSalesFromCsv
     }
 
     unless valid_parser
-      context.error_message = "Arquivo Inválido."
+      context.error_message = sale_parser.error
       context.fail!
     end
   end
-
-  def verify_file_exists(file)
-    if file.blank?
-      context.error_message = "Nenhum arquivo foi selecionado."
-      context.fail!
-    end
-  end
-
   private
 
   def csv_file
