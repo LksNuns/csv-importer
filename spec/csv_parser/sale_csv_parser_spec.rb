@@ -50,4 +50,40 @@ RSpec.describe SaleCsvParser do
       expect(parser.valid?).to be false
     end
   end
+
+  describe "#verify_file" do
+    context "when has an error" do
+      it "invalid file" do
+        parser = SaleCsvParser.new("spec/support/files/not_exists.bla")
+
+        expect(parser.error).to eq "Arquivo não encontrado."
+      end
+
+      it "blank file" do
+        parser = SaleCsvParser.new("")
+
+        expect(parser.error).to eq "Nenhum arquivo foi selecionado."
+      end
+
+      it "invalid content type" do
+        parser = SaleCsvParser.new("spec/support/files/photo.jpg")
+
+        expect(parser.error).to eq "Formato inválido de arquivo."
+      end
+
+      it "miss columns" do
+        parser = SaleCsvParser.new("spec/support/files/sale_data_invalid_columns.csv")
+
+        expect(parser.error).to eq "As seguintes colunas não foram encontradas: preco_unitario e endereco"
+      end
+    end
+
+    context "when is a valid file" do
+      it "has no errors" do
+        parser = SaleCsvParser.new("spec/support/files/sale_data.csv")
+
+        expect(parser.error).to eq nil        
+      end
+    end
+  end
 end

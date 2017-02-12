@@ -1,7 +1,7 @@
 module ValidateSaleCsvFile
   def verify_file_exist(path)
-    return if path.present?
-    raise "Nenhum arquivo selecionado."
+    raise "Nenhum arquivo foi selecionado." if path.blank?
+    raise "Arquivo não encontrado." unless File.exists? path
   end
 
   def verify_structure(file)
