@@ -1,9 +1,22 @@
 <section class="jumbotron main-header">
   <div class="container">
+
+    <div class="form-group form-group-lg">
     <%= form_tag(import_csv_sales_path,  multipart: true) do %>
-      <%= file_field_tag :file %>
+      <div class="input-group">
+        <input type="text" class="form-control" readonly>
+          <label class="input-group-btn">
+              <span class="btn btn-lg btn-primary">
+                  Browse&hellip; <%= file_field_tag :file, style:"display: none;" %>
+              </span>
+          </label>
+      </div>
       <%= submit_tag 'Submit' %>
     <% end %>
+  </div>
+
+
+
 
     <% if flash[:error].present? %>
       <div id="activity_error" class="alert alert-danger alert-white rounded">

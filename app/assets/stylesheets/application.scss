@@ -46,3 +46,15 @@ footer {
 .text-center {
    text-align:center
 }
+
+.btn-primary {
+    color: #cccccc;
+    background-color: #1b1e24;
+    border-color: #1b1e24;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #43464a;
+    border-color: #43464a;
+}
