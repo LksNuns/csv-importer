@@ -2,7 +2,7 @@ require 'csv'
 
 class SaleCsvParser
   include ValidateSaleCsvFile
-  
+
   attr_accessor :error
 
   def initialize(file)
@@ -54,12 +54,12 @@ class SaleCsvParser
   private
 
   def verify_file
-    @error = verify_file_exist(@file)
-    return if error.present?
-
-    @error = verify_content_type(@file)
-    return if error.present?
-
-    @error = verify_structure(open_csv)
+    begin
+      verify_file_exist(@file)
+      verify_content_type(@file)
+      verify_structure(open_csv)
+    rescue Exception => e
+      @error = e.message
+    end
   end
 end
