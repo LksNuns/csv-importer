@@ -7,7 +7,7 @@ class CreateSalesFromCsv
   end
 
   def read_csv_file
-    sale_parser = SaleCsvParser.new(csv_file.path)
+    sale_parser = SaleCsvParser.new(csv_file)
     valid_parser = sale_parser.each_sale_params { |params|
       Sale.create(params)
     }
