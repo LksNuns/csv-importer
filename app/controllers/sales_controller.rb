@@ -8,7 +8,7 @@ class SalesController < ApplicationController
   def import_csv
     result = CreateSalesFromCsv.call(file: params[:file])
 
-    flash[:error] = result.flash_message if result.failure?
+    flash[:error] = result.error_message if result.failure?
     redirect_to sales_path
   end
 end
