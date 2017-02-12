@@ -17,10 +17,16 @@
         <div class="row">
           <div class="col-sm-12 col-md-10">
             <% if flash[:error].present? %>
-              <div id="activity_error" class="alert alert-danger alert-white rounded">
+              <div id="sale_error" class="alert alert-danger alert-white rounded">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
                 <i class="glyphicon glyphicon-exclamation-sign"></i><strong class='padding-error'>ERRO!</strong>
                 <span id='error-msg'><%= flash[:error] %></span>
+              </div>
+            <% elsif flash[:success].present? %>
+              <div id="sale_success" class="alert alert-success alert-white rounded">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                <i class="glyphicon glyphicon-ok-sign"></i><strong class='padding-error'>SUCESSO!</strong>
+                <span id='error-msg'><%= flash[:success] %></span>
               </div>
             <% end %>
           </div>

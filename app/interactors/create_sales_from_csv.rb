@@ -7,11 +7,13 @@ class CreateSalesFromCsv
 
   def read_csv_file
     sale_parser = SaleCsvParser.new(csv_file)
-    valid_parser = sale_parser.each_sale_params { |params|
+    parser_success = sale_parser.each_sale_params do |params|
       Sale.create(params)
-    }
+    end
 
-    unless valid_parser
+    if parser_success
+      context.success_message = "Dados importados com sucesso."
+    else
       context.error_message = sale_parser.error
       context.fail!
     end
