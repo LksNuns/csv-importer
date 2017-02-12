@@ -1,32 +1,43 @@
-<section class="jumbotron main-header">
+<header class="header-sales-index">
   <div class="container">
 
+    <div class="row">
     <div class="form-group form-group-lg">
-    <%= form_tag(import_csv_sales_path,  multipart: true) do %>
-      <div class="input-group">
-        <input type="text" class="form-control" readonly>
+      <%= form_tag(import_csv_sales_path,  multipart: true) do %>
+        <div class="input-group">
+          <input type="text" class="form-control" readonly>
           <label class="input-group-btn">
-              <span class="btn btn-lg btn-primary">
-                  Browse&hellip; <%= file_field_tag :file, style:"display: none;" %>
-              </span>
+            <span class="btn btn-lg btn-primary">
+              Browse&hellip; <%= file_field_tag :file, style:"display: none;" %>
+            </span>
           </label>
-      </div>
-      <%= submit_tag 'Submit' %>
-    <% end %>
+        </div>
+
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-10">
+            <% if flash[:error].present? %>
+              <div id="activity_error" class="alert alert-danger alert-white rounded">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+                <i class="glyphicon glyphicon-exclamation-sign"></i><strong class='padding-error'>ERRO!</strong>
+                <%= flash[:error] %>
+              </div>
+            <% end %>
+
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <div class="pull-right-md text-center-sm">
+              <%= button_tag(type: "submit", class: "btn btn-lg btn-success") do %>
+                <i class="glyphicon glyphicon-upload"></i> IMPORTAR
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
   </div>
-
-
-
-
-    <% if flash[:error].present? %>
-      <div id="activity_error" class="alert alert-danger alert-white rounded">
-        <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
-        <strong>Error!</strong>
-        <%= flash[:error] %>
-      </div>
-    <% end %>
-  </div>
-</section>
+</header>
 
 <section class="container main-container">
   <div class="col-sm-12 col-md-6">

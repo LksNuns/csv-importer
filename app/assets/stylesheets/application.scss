@@ -37,10 +37,23 @@ footer {
     .text-center-sm {
         text-align: center;
     }
+    .center-block-sm {
+      float:none;
+      margin:0 auto;
+    }
 }
 
-.main-container {
+@media (min-width: 992px) {
+    .pull-right-md {
+        float: right;
+    }
+}
+
+.header-sales-index {
+  border-bottom: 1px solid #1b1e24;
+  padding-top: 48px;
   padding-bottom: 20px;
+  background-color: #FFF;
 }
 
 .text-center {
@@ -57,4 +70,16 @@ footer {
     color: #fff;
     background-color: #43464a;
     border-color: #43464a;
+}
+
+.alert {
+  padding: 11px;
+  margin-bottom: 0px;
+  background-color: #ffd9d9;
+  border-color: #ff7171;
+  color: #940300;
+}
+
+.padding-error {
+  padding-left: 25px;;
 }
