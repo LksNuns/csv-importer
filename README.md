@@ -27,13 +27,16 @@ Também foi utilizada a gem `money-rails` para melhor controle e facilidade com 
 Para a realização do projeto foram realizados testes para `models`, `controllers`, `features` utilizando o `capybara`, `interactors`, `parsers`.
 Também para o teste utilizando o `capybara` foi utilizdo o padrão `Page Object`.
 
+#### Rodar os Teste
+`rspec`
+
 ### Como Rodar
 ```
 rake db:create && rake db:migrate && rake db:seeds
 rails s
 ```
 #### Acessar:
-```localhost:3000```
+`localhost:3000`
 
 #### Modelo de arquivo CSV:
 Um arquivo de modelo `csv` está no root do projeto com o nome de `sale_dados.csv`.
