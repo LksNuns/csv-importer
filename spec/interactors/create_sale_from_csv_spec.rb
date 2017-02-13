@@ -1,9 +1,15 @@
+require 'rails_helper'
+
 describe CreateSalesFromCsv do
 
   describe ".call" do
     context "when given valid file" do
+
       it "succeeds" do
-        context = CreateSalesFromCsv.call(file: 'spec/support/files/sale_data.csv')
+        file = double("file")
+        allow(file).to receive(:path).and_return('spec/support/files/sale_data.csv')
+
+        context = CreateSalesFromCsv.call(file: file)
 
         expect(context).to be_a_success
       end
@@ -25,7 +31,10 @@ describe CreateSalesFromCsv do
   describe "#verify_file_exists" do
     context "when passing with success" do
       it "success" do
-        context = CreateSalesFromCsv.call(file: 'spec/support/files/sale_data.csv')
+        file = double("file")
+        allow(file).to receive(:path).and_return('spec/support/files/sale_data.csv')
+
+        context = CreateSalesFromCsv.call(file: file)
 
         expect(context).to be_a_success
       end
