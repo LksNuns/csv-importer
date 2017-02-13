@@ -6,10 +6,10 @@ class SalesController < ApplicationController
   end
 
   def import_csv
-    result = CreateSalesFromCsv.call(file: params[:file].path)
+    result = CreateSalesFromCsv.call(file: params[:file])
 
     if result.success?
-      flash[:success] = result.success_message 
+      flash[:success] = result.success_message
     else
       flash[:error] = result.error_message
     end

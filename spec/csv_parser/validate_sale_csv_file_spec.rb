@@ -40,19 +40,19 @@ RSpec.describe ValidateSaleCsvFile do
   describe "#verify_file_exist" do
     context "when passing a file with a correct path" do
       it "raises no error" do
-        expect{verify_content_type('spec/support/files/sale_data.csv')}.to_not raise_error
+        expect{verify_file_exist('spec/support/files/sale_data.csv')}.to_not raise_error
       end
     end
 
     context "when passing a file with an invalid content type" do
-      it "raise errror to blank path" do
-        expect{verify_content_type('')}.to raise_error(
+      it "raise error to blank path" do
+        expect{verify_file_exist('')}.to raise_error(
           "Nenhum arquivo foi selecionado."
         )
       end
 
       it "raise errror to invalid path" do
-        expect{verify_content_type('spec/support/files/not_exist.bla')}.to raise_error(
+        expect{verify_file_exist('spec/support/files/not_exist.bla')}.to raise_error(
           "Arquivo não encontrado."
         )
       end

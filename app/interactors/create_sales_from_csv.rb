@@ -21,6 +21,9 @@ class CreateSalesFromCsv
   private
 
   def csv_file
-    @csv_file ||= context.file
+    if @csv_file.blank?
+      @csv_file = context.file.blank? ? "" : context.file.path
+    end
+    @csv_file
   end
 end
