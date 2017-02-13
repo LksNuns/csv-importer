@@ -1,11 +1,4 @@
 # CSV IMPORTER
-
-`ruby 2.3.1` `rails 4.2.7.1`
-
-Sobre
-Sistema simples que realiza a importação de um arquivo csv e adiciona os dados em uma tabela.
-
-# CSV IMPORTER
 `ruby 2.3.1`
 `rails 4.2.7.1`
 
